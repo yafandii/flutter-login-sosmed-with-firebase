@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "276335661659",
+    "project_id": "flutter-login-sosmed-9ee5f",
+    "storage_bucket": "flutter-login-sosmed-9ee5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276335661659:android:1d59e6944a5f4db151257e",
+        "android_client_info": {
+          "package_name": "com.example.flutter_login_sosmed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276335661659-rn6uqcor8886avr6ng9rmleh4134eln1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdhlb34lrThzHktdzXynIMPmn1TxqjSJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276335661659-dqqj7u14l19k4vh86ubmvol87vl10cg8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
