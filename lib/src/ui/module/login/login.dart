@@ -4,6 +4,7 @@ import 'package:flutter_login_sosmed/src/ui/module/detail/detail.dart';
 import 'package:flutter_login_sosmed/src/ui/module/login/login_bloc.dart';
 import 'package:flutter_login_sosmed/src/ui/module/login/login_event.dart';
 import 'package:flutter_login_sosmed/src/ui/module/login/login_state.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = 'login';
@@ -15,6 +16,23 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late LoginBloc _bloc;
+
+  Future<String?> _getFacebookToken() async {
+    final LoginResult result = await FacebookAuth.instance.login();
+    if (result.status == LoginStatus.success) {
+      final AccessToken? accessToken = result.accessToken;
+      return accessToken?.token;
+    } else {
+      return null;
+    }
+  }
+
+  Future _handleFacebookSignIn() async {
+    String? facebookAccessToken = await _getFacebookToken();
+
+    debugPrint("facebookAccessToken = $facebookAccessToken");
+    // loginToFirebase(accessToken: facebookAccessToken, isGoogle: false);
+  }
 
   @override
   void initState() {
@@ -47,9 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text("Login with Google")),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                    onPressed: () {
-                      _bloc.add(LoginWithFacebook());
-                    },
+                    onPressed: _handleFacebookSignIn,
                     child: const Text("Login with Facebook")),
               ],
             );
