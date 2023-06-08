@@ -27,18 +27,11 @@ class AuthRepository {
 
   ///facebook
   Future<String?> signInWithFacebook() async {
-    try {
-      final res = await FacebookAuth.instance.login();
-      switch (res.status) {
-        case LoginStatus.success:
-          print("Suskses");
-          final accessToken = res.accessToken?.token;
-          return accessToken;
-        default:
-          print("Gagal");
-          return null;
-      }
-    } catch (_) {
+    final LoginResult result = await FacebookAuth.instance.login();
+    if (result.status == LoginStatus.success) {
+      final AccessToken? accessToken = result.accessToken;
+      return accessToken?.token;
+    } else {
       return null;
     }
   }
